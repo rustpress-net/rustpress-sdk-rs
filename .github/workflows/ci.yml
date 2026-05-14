@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: rustpress-net/rustpress-core-devops/actions/ci-rust@main
+        with:
+          # Pre-existing code has style debt; don't block CI on clippy/fmt
+          # until those are cleaned up separately. Tests are the gate.
+          run_clippy: 'false'
+          run_fmt: 'false'
