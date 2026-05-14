@@ -534,7 +534,7 @@ path = "src/lib.rs"
     )
 }
 
-fn generate_readme(name: &str, struct_name: &str, project_type: &str) -> String {
+fn generate_readme(name: &str, _struct_name: &str, project_type: &str) -> String {
     let crate_name = to_snake_case(name);
     format!(
         r#"# {name}
@@ -590,7 +590,6 @@ MIT
 "#,
         name = name,
         crate_name = crate_name,
-        struct_name = struct_name,
         project_type = project_type
     )
 }
